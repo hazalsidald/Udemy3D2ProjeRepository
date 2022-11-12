@@ -1,23 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using Udemy1Project.Inputs;
 using UnityEngine;
 
-namespace Udemy2Project.Inputs
+public class DefaultInput : MonoBehaviour
 {
-    public class DefaultInput //normal bir class monobehavior gerek yok.
+    // Start is called before the first frame update
+    void Start()
     {
-        private DefaultAction _input;
-        public bool IsForceUp { get; private set; }
-        public DefaultInput()
-        {
-            _input = new DefaultAction();
-           _input.Rocket.ForceUp.performed += context => IsForceUp = context.ReadValueAsButton();   
-        }
-
-        
-            
         
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }
