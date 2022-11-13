@@ -1,18 +1,66 @@
 using System.Collections;
 using System.Collections.Generic;
+using Udemy2Project.Inputs;
 using UnityEngine;
+using System;
+using Udemy2Project.Movements;
 
-public class PlayerController : MonoBehaviour
+
+ namespace Udemy2Project.Controllers //namespace classlarý birbirinden ayirma yöntemidi.namespaceler proje adý ve dosya adýyla olur.
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public class PlayerController : MonoBehaviour
+    { 
+
+        DefaultInput _input;
+
+        Mover _mover;
+
+        float _leftRight;
+
+        bool _isForceUp;
+            
+
+
+        private void Awake()
+
+        {
+          
+            _input = new DefaultInput();
+            _mover = new Mover(rigidbody:GetComponent<Rigidbody>());
+            
+        }
+
+
+        private void Update()
+
+        {
+           
+
+            if(_input.IsForceUp)
+            {
+                _isForceUp=true;    
+            }
+            else
+            {
+                _isForceUp = false;
+            }
+
+            
+        }
+
+
+        private void FixedUpdate()
+        {
+            if(_isForceUp)
+            {
+                
+                _mover.FixedTick();
+            }
+
+
+
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
+

@@ -1,18 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using Udemy1Project.Inputs;
 using UnityEngine;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
-public class DefaultInput : MonoBehaviour
+
+namespace Udemy2Project.Inputs
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+   public class DefaultInput 
+   {
         
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+       private DefaultAction _input;
+       public bool IsForceUp { get; private set; }
+
+       public bool LeftRight { get; private set; } 
+
+        public DefaultInput ()
+       {
+            
+           _input = new DefaultAction ();  
+
+           _input.Rocket.ForceUp.performed += context => IsForceUp = context.ReadValueAsButton ();
+
+           _input.Enable();
+
+
+            
+       }
+
+
+
+
+
         
-    }
+  }
 }
+
